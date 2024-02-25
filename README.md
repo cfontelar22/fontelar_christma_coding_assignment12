@@ -1,3 +1,122 @@
+# Component Library using React and Storybook
+
+This repository contains a Component Library created using React and Storybook.
+
+## Getting Started
+
+To run the web application locally, follow these steps:
+
+### Prerequisites
+
+Make sure you have Docker, Node.js and npm installed on your machine.
+
+
+### Installation
+
+1. Clone this repository:
+
+git clone https://github.com/cfontelar22/fontelar_christma_coding_assignment12.git
+
+2. Navigate to the project directory:
+
+cd fontelar_christma_coding_assignment12
+
+3. Install dependencies for the React application:
+
+npm install
+
+4. Navigate to the site directory:
+
+cd fontelar_christma_site
+
+5. Install dependencies for the Storybook:
+
+npm install
+
+6. Build the production version of the component library:
+
+npm run build
+
+### Running the Site
+
+To run the web application and Storybook locally, follow these steps:
+
+1. Start the React development server:
+
+npm start
+
+2. Open a new terminal window/tab and navigate to the site directory:
+
+cd fontelar_christma_site
+
+3. Start Storybook
+
+npm run storybook
+
+
+### Accessing the Site
+
+Once the development server and Storybook are running, you can access the web application and Storybook in your browser:
+
+Web Application: [http://localhost:8083](http://localhost:8083)
+Storybook: [http://localhost:6006](http://localhost:6006)
+
+Update your package.json file
+
+"scripts": {
+  "start": "PORT=8083 react-scripts start",
+  ...
+}
+
+1. Clear cache: If you're using a development server like react-scripts, sometimes clearing the cache can help. You can do this by running:
+
+npm start -- --reset-cache or yarn start
+
+### Or this way will work too:
+
+Once the development server and Storybook are running, and updating the package.json file you can access the web application and Storybook in your browser using the following commands: 
+
+Run the following command in your terminal to rebuild your React application:
+
+npm run build
+
+Once the build process is complete, you can run your application again using the serve package. Install serve globally if you haven't already:
+
+npm install -g serve
+
+Run your application using serve:
+
+serve -s build -l 8083
+
+
+### Docker Deployment
+Alternatively, you can deploy the web application using Docker. Follow these steps:
+
+1. Build the Docker image:
+
+docker build -t fontelar_christma_coding_assignment12
+
+
+2. Run the Docker container:
+docker run -d -p 8083:80 fontelar_christma_coding_assignment12
+
+
+3. Access the web application in your browser:
+[http://localhost:8083](http://localhost:8083)
+
+
+## Structure
+The project structure is as follows:
+- `fontelar_christma_site/`: Contains the React application.
+- `Dockerfile`: Defines the Docker configuration for deploying the web application.
+- `README.md`: Provides instructions for setting up and running the web application.
+
+## Notes
+- The Docker container hosts a production build of the React app for the component library.
+- The site files are served using the NGINX web server.
+- The application is accessible on port 8083 of your local machine.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
