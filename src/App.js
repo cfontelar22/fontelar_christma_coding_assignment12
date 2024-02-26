@@ -1,23 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Button from './components/Button/Button.tsx';
+import Label from './components/Label/Label.tsx';
+import Dropdown from './components/Dropdown/Dropdown.tsx';
 
 function App() {
+  const handleLabelClick = () => {
+    console.log('Default Label clicked');
+  };
+
+  const handleDropdownClick = () => {
+    console.log('Dropdown clicked');
+  };
+
+  const handleButtonClick = () => {
+    console.log('Default Button clicked');
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{ textAlign: 'center' }}>
+      <h1>Web Component Library</h1>
+      <div style={{ display: 'inline-block', textAlign: 'center' }}>
+        {/* Button Section */}
+        <div style={{ marginBottom: '20px' }}>
+          <h2>Button</h2>
+          <div style={{ display: 'inline-block' }}>
+            <Button text="Default" onClick={handleButtonClick} />
+            <Button
+              text="Disabled Button"
+              disabled
+              onClick={() => console.log('Disabled Button clicked')}
+            />
+          </div>
+        </div>
+        
+        {/* Label Section */}
+        <div style={{ marginBottom: '20px' }}>
+          <h2>Label</h2>
+          <div style={{ display: 'inline-block' }}>
+            <Label text="Default Label" onClick={handleLabelClick} /> 
+            <Label text="Disabled Label" disabled onClick={handleLabelClick} /> 
+          </div>
+        </div>
+
+        {/* Dropdown Section */}
+        <div style={{ marginBottom: '20px' }}>
+          <h2>Dropdown</h2>
+          <div style={{ display: 'inline-block' }}>
+            <Dropdown 
+              options={['Brand City', 'Design Avenue', 'Social Media District', 'UX Factory', 'Web Town']}
+              onClick={handleDropdownClick}
+            />
+            <Dropdown 
+              options={['Brand City', 'Design Avenue', 'Social Media District', 'UX Factory', 'Web Town']}
+              disabled
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
