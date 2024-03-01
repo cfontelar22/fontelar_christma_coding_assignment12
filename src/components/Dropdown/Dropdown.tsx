@@ -1,4 +1,3 @@
-// Dropdown.tsx
 import React from 'react';
 import styled from 'styled-components';
 
@@ -14,12 +13,12 @@ const Container = styled.div`
   display: inline-block;
 `;
 
-const Select = styled.select<{ disabled?: boolean }>`
+const Select = styled.select<{ disabled?: boolean; backgroundColor?: string }>`
   padding: 8px 24px 8px 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: ${(props) => (props.disabled ? '#f5f5f5' : '#fff')};
+  background-color: ${(props) => props.backgroundColor || (props.disabled ? '#f5f5f5' : '#fff')};
   color: ${(props) => (props.disabled ? '#999' : '#333')};
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
   width: 200px; /* Adjust width for responsiveness */
@@ -37,7 +36,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options, disabled, onClick }) => {
 
   return (
     <Container>
-      <Select disabled={disabled} onChange={handleOptionClick}>
+      <Select disabled={disabled} onChange={handleOptionClick} backgroundColor="#fff"> {/* Pass backgroundColor prop */}
         {options.map((option, index) => (
           <option key={index} value={option}>{option}</option>
         ))}

@@ -1,14 +1,12 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Dropdown from './Dropdown.tsx'; // Correct import path
-import { DropdownProps } from './Dropdown.tsx'; // Import DropdownProps without default export
+import Dropdown, { DropdownProps } from './Dropdown.tsx';
 
 export default {
   title: 'Components/Dropdown',
   component: Dropdown,
   argTypes: {
-    disabled: { control: 'boolean' },
-    options: { control: 'array' }, // Add control for options
+    disabled: { control: 'boolean' }, // Only include the 'disabled' boolean control
   },
 } as Meta;
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { darken } from 'polished'; // Import darken function
 
 // Define ButtonProps interface
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -9,18 +10,18 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 // StyledButton component for styling the button
-const StyledButton = styled.button`
+const StyledButton = styled.button<{ disabled?: boolean; backgroundColor?: string }>`
   padding: 10px 20px;
   font-size: 16px;
   border: none;
   cursor: pointer;
-  background-color: ${({ disabled }) => (disabled ? '#ccc' : '#008080')};
-  color: ${({ disabled }) => (disabled ? '#666' : 'white')}; /* White for enabled, gray for disabled */
+  background-color: ${({ disabled, backgroundColor }) => (disabled ? '#ccc' : backgroundColor || '#008080')};
+  color: ${({ disabled }) => (disabled ? '#666' : 'white')}; 
   border-radius: 5px;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: ${({ disabled }) => (disabled ? '#ccc' : '#2F4F4F')};
+    background-color: ${({ disabled, backgroundColor }) => (disabled ? '#ccc' : darken(0.1, backgroundColor || '#008080'))}; // Darken background color on hover
   }
 
   &:focus {
@@ -39,7 +40,6 @@ const StyledButton = styled.button`
     font-size: 14px;
   }
 `;
-
 // Button component definition
 const Button: React.FC<ButtonProps> = ({ text, onClick, ...props }) => {
   const handleClick = () => {

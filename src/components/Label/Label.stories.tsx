@@ -7,7 +7,9 @@ export default {
   component: Label,
   argTypes: {
     text: { control: 'text' },
-    disabled: { control: 'boolean' },
+    disabled: { control: 'boolean' }, 
+    onClick: { action: 'clicked' },
+
   },
 } as Meta;
 
@@ -16,7 +18,6 @@ const Template: Story<LabelProps> = (args) => <Label {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   text: 'Default Label',
-  disabled: false,
 };
 
 export const Disabled = Template.bind({});
