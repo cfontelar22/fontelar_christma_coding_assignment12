@@ -12,8 +12,8 @@ function App() {
     console.log('Dropdown clicked');
   };
 
-  const handleButtonClick = () => {
-    console.log('Default Button clicked');
+  const handleButtonClick = (buttonName) => {
+    console.log(`${buttonName} Button clicked`);
   };
 
   return (
@@ -24,12 +24,18 @@ function App() {
         <div style={{ marginBottom: '20px' }}>
           <h2>Button</h2>
           <div style={{ display: 'inline-block' }}>
-            <Button text="Default" onClick={handleButtonClick} />
-            <Button
-              text="Disabled Button"
-              disabled
-              onClick={() => console.log('Disabled Button clicked')}
-            />
+            {/* Search Button */}
+            <Button text="Search Button" backgroundColor="#FF5733" onClick={() => handleButtonClick('Search')} />
+            {/* Disabled Search Button */}
+            <Button text="Disabled Search Button" backgroundColor="#FF5733" disabled onClick={() => handleButtonClick('Disabled Search')} />
+            {/* View Button */}
+            <Button text="View Button" backgroundColor="#FFC300" onClick={() => handleButtonClick('View')} />
+            {/* Disabled View Button */}
+            <Button text="Disabled View Button" backgroundColor="#FFC300" disabled onClick={() => handleButtonClick('Disabled View')} />
+            {/* View More Projects Button */}
+            <Button text="View More Projects" backgroundColor="#28A745" onClick={() => handleButtonClick('View More Projects')} />
+            {/* Disabled View More Projects Button */}
+            <Button text="Disabled View More Projects" backgroundColor="#28A745" disabled onClick={() => handleButtonClick('Disabled View More Projects')} />
           </div>
         </div>
         

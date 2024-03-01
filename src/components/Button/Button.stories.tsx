@@ -1,3 +1,4 @@
+// Button.stories.tsx
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Button, { ButtonProps } from './Button.tsx';
@@ -13,15 +14,21 @@ export default {
 
 const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
-  text: 'Default Button',
-  backgroundColor: '#008080',
+
+export const SearchButton = Template.bind({});
+SearchButton.args = {
+  text: 'Search',
+  backgroundColor: '#2E86C1',
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  text: 'Disabled Button',
-  backgroundColor: '#ccc',
-  disabled: true,
+export const ViewButton = Template.bind({});
+ViewButton.args = {
+  text: 'View',
+  backgroundColor: '#F39C12',
+};
+
+export const ViewMoreProjectsButton = Template.bind({});
+ViewMoreProjectsButton.args = {
+  text: 'View More Projects',
+  backgroundColor: '#27AE60',
 };
