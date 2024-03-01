@@ -25,17 +25,33 @@ function App() {
           <h2>Button</h2>
           <div style={{ display: 'inline-block' }}>
             {/* Search Button */}
-            <Button text="Search Button" backgroundColor="#FF5733" onClick={() => handleButtonClick('Search')} />
+            <Button text="Search" backgroundColor="#FF5733" onClick={() => handleButtonClick('Search')} />
             {/* Disabled Search Button */}
-            <Button text="Disabled Search Button" backgroundColor="#FF5733" disabled onClick={() => handleButtonClick('Disabled Search')} />
+            <Button text="Search" backgroundColor="#FF5733" disabled onClick={() => handleButtonClick('Disabled Search')} />
             {/* View Button */}
-            <Button text="View Button" backgroundColor="#FFC300" onClick={() => handleButtonClick('View')} />
+            <Button text="View" backgroundColor="#FFC300" onClick={() => handleButtonClick('View')} />
             {/* Disabled View Button */}
-            <Button text="Disabled View Button" backgroundColor="#FFC300" disabled onClick={() => handleButtonClick('Disabled View')} />
+            <Button text="View" backgroundColor="#FFC300" disabled onClick={() => handleButtonClick('Disabled View')} />
             {/* View More Projects Button */}
             <Button text="View More Projects" backgroundColor="#28A745" onClick={() => handleButtonClick('View More Projects')} />
             {/* Disabled View More Projects Button */}
             <Button text="Disabled View More Projects" backgroundColor="#28A745" disabled onClick={() => handleButtonClick('Disabled View More Projects')} />
+            {/* Left Arrow Button */}
+            <Button text="&lt;" backgroundColor="#2E86C1" onClick={() => handleButtonClick('Left Arrow')} />
+            {/* Right Arrow Button */}
+            <Button text="&gt;" backgroundColor="#F39C12" onClick={() => handleButtonClick('Right Arrow')} />
+            {/* Disabled Left Arrow Button */}
+            <Button text="&lt;" backgroundColor="#2E86C1" disabled onClick={() => handleButtonClick('Disabled Left Arrow')} />
+            {/* Disabled Right Arrow Button */}
+            <Button text="&gt;" backgroundColor="#F39C12" disabled onClick={() => handleButtonClick('Disabled Right Arrow')} />
+            {/* About Button */}
+            <Button text="About" backgroundColor="#6A5ACD" onClick={() => handleButtonClick('About')} />
+            {/* Disabled About Button */}
+            <Button text="About" backgroundColor="#6A5ACD" disabled onClick={() => handleButtonClick('Disabled Abouts')} />
+            {/* Projects Button */}
+            <Button text="Projects" backgroundColor="#FF1493" onClick={() => handleButtonClick('Projects')} />
+            {/* Disabled Projects Button */}
+            <Button text="Projects" backgroundColor="#FF1493" disabled onClick={() => handleButtonClick('Disabled Projects')} />
           </div>
         </div>
         
