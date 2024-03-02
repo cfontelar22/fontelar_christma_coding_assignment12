@@ -1,32 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { darken } from 'polished'; // Import darken function
 
 // Define ButtonProps interface
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
-  onClick?: () => void; // Add onClick prop
+  hoverBackgroundColor?: string; // Add hoverBackgroundColor prop
 }
 
 // StyledButton component for styling the button
-const StyledButton = styled.button<{ disabled?: boolean; backgroundColor?: string }>`
+const StyledButton = styled.button<{ disabled?: boolean; backgroundColor?: string; hoverBackgroundColor?: string }>`
   padding: 10px 20px;
   font-size: 16px;
   border: none;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   background-color: ${({ disabled, backgroundColor }) => (disabled ? '#ccc' : backgroundColor || '#008080')};
   color: ${({ disabled }) => (disabled ? '#666' : 'white')}; 
   border-radius: 5px;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: ${({ disabled, backgroundColor }) => (disabled ? '#ccc' : darken(0.1, backgroundColor || '#008080'))}; // Darken background color on hover
-  }
+  transition: background-color 0.3s ease; /* Add transition for smoother hover effect */
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.5); 
+    box-shadow: none; /* Remove the box-shadow */
+  }
+
+  &:hover:not(:disabled) {
+    background-color: ${({ hoverBackgroundColor, backgroundColor }) => (hoverBackgroundColor ? hoverBackgroundColor : backgroundColor)}; /* Use hoverBackgroundColor if provided, otherwise use backgroundColor */
   }
 
   &:disabled {
@@ -40,18 +39,13 @@ const StyledButton = styled.button<{ disabled?: boolean; backgroundColor?: strin
     font-size: 14px;
   }
 `;
-// Button component definition
-const Button: React.FC<ButtonProps> = ({ text, onClick, ...props }) => {
-  const handleClick = () => {
-    console.log('Button clicked');
-    if (onClick) {
-      onClick(); // Invoke onClick event handler if provided
-    }
-  };
 
+
+// Button component definition
+const Button: React.FC<ButtonProps> = ({ text, hoverBackgroundColor, ...props }) => {
   return (
     <div style={{ display: 'inline-block', marginRight: '10px' }}>
-      <StyledButton {...props} onClick={handleClick}>
+      <StyledButton {...props} hoverBackgroundColor={hoverBackgroundColor}>
         {text}
       </StyledButton>
     </div>
@@ -61,7 +55,7 @@ const Button: React.FC<ButtonProps> = ({ text, onClick, ...props }) => {
 // PropTypes for type-checking
 Button.propTypes = {
   text: PropTypes.string.isRequired,
-  onClick: PropTypes.func, // Define onClick prop type
+  hoverBackgroundColor: PropTypes.string, // Define hoverBackgroundColor prop type
 };
 
 export default Button;
