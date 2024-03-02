@@ -1,4 +1,4 @@
-// Button.stories.tsx
+
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Button, { ButtonProps } from './Button.tsx';
@@ -9,7 +9,7 @@ export default {
   argTypes: {
     disabled: { control: 'boolean' }, 
     onClick: { action: 'clicked' },
-    onMouseEnter: { action: 'hovered' }, // Add onMouseEnter action
+    onMouseEnter: { action: 'hovered' }, 
   },
 } as Meta;
 

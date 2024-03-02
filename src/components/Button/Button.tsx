@@ -5,7 +5,7 @@ import styled from 'styled-components';
 // Define ButtonProps interface
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
-  hoverBackgroundColor?: string; // Add hoverBackgroundColor prop
+  hoverBackgroundColor?: string; 
 }
 
 // StyledButton component for styling the button
@@ -55,7 +55,7 @@ const Button: React.FC<ButtonProps> = ({ text, hoverBackgroundColor, ...props })
 // PropTypes for type-checking
 Button.propTypes = {
   text: PropTypes.string.isRequired,
-  hoverBackgroundColor: PropTypes.string, // Define hoverBackgroundColor prop type
+  hoverBackgroundColor: PropTypes.string, 
 };
 
 export default Button;
