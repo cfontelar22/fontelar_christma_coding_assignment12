@@ -6,18 +6,23 @@ export interface LabelProps {
   text: string;
   disabled?: boolean;
   onClick?: () => void;
+  onMouseEnter?: () => void; // Add onMouseEnter prop
 }
 
-const StyledLabel = styled.label<{ disabled?: boolean; clicked?: boolean }>`
+const StyledLabel = styled.label<{ disabled?: boolean; clicked?: boolean; hovered?: boolean }>`
   /* Define styles for the label */
   color: ${({ disabled, clicked }) => (disabled ? '#ccc' : clicked ? 'green' : 'black')}; /* Change color when clicked */
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   margin-bottom: 16px; /* Add margin for spacing */
   padding: 10px 10px;
   text-decoration: ${({ clicked }) => (clicked ? 'underline' : 'none')}; /* Underline if clicked */
+
+  &:hover {
+    color: ${({ disabled, clicked }) => (disabled ? '#ccc' : clicked ? 'green' : 'blue')}; /* Change color on hover */
+  }
 `;
 
-const Label: React.FC<LabelProps> = ({ text, disabled, onClick }) => {
+const Label: React.FC<LabelProps> = ({ text, disabled, onClick, onMouseEnter }) => {
   const [clicked, setClicked] = useState(false); // State to track clicked state
 
   const handleClick = () => {
@@ -28,10 +33,18 @@ const Label: React.FC<LabelProps> = ({ text, disabled, onClick }) => {
     }
   };
 
+  const handleMouseEnter = () => {
+    if (onMouseEnter && !disabled) {
+      onMouseEnter();
+      console.log(`Label "${text}" hovered`); // Log message to console
+    }
+  };
+
   return (
     <StyledLabel
       disabled={disabled}
       clicked={clicked}
+      onMouseEnter={handleMouseEnter} // Pass onMouseEnter event handler
       onClick={handleClick}
     >
       {text}
@@ -43,6 +56,7 @@ Label.propTypes = {
   text: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
+  onMouseEnter: PropTypes.func, // Add PropTypes for onMouseEnter
 };
 
 export default Label;

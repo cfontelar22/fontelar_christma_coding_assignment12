@@ -1,16 +1,52 @@
 import React, { useState } from 'react';
+import InputField from './components/InputField/InputField.tsx'; 
 import Button from './components/Button/Button.tsx';
 import Label from './components/Label/Label.tsx';
 import Dropdown from './components/Dropdown/Dropdown.tsx';
 
+
 function App() {
+  const [inputValue, setInputValue] = useState('');
+  const [inputHovered, setInputHovered] = useState(false);
+  const [inputActive, setInputActive] = useState(false);
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const [activePage, setActivePage] = useState('About');
+
+
+  const handleInputClick = () => {
+    console.log('InputField clicked');
+    setInputActive(true);
+    setInputHovered(false);
+  };
+
+  const handleInputHover = () => {
+    console.log('InputField hovered');
+    setInputHovered(true);
+  };
+
+  const handleInputLeave = () => {
+    setInputHovered(false);
+  };
+
+  const handleInputBlur = () => {
+    setInputActive(false);
+  };
   
   const [activeButton, setActiveButton] = useState(null);
 
-  const handleLabelClick = () => {
-    console.log('Default Label clicked');
+  const handleLabelClick = (label) => {
+    console.log(`${label} Label clicked`);
+    setActivePage(label);
   };
 
+  const handleLabelHover = (label) => {
+    console.log(`${label} Label hovered`);
+  };
+  
   const handleDropdownClick = () => {
     console.log('Dropdown clicked');
   };
@@ -25,9 +61,37 @@ function App() {
     setActiveButton(buttonName);
   };
 
+ 
+
   return (
     <div className="App" style={{ textAlign: 'center' }}>
       <h1>Web Component Library</h1>
+
+      {/* InputField Section */}
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        {/* Default State Column */}
+        <div style={{ marginRight: '20px' }}>
+          <h2>Input Field</h2>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <InputField
+              placeholder="Keyword Search"
+              value={inputValue}
+              onChange={handleInputChange}
+              onClick={handleInputClick}
+              onBlur={handleInputBlur}
+              onMouseEnter={handleInputHover}
+              onMouseLeave={handleInputLeave}
+              style={{
+                backgroundColor: inputActive ? '#c0deed' : (inputHovered ? '#eee' : 'transparent'),
+                border: inputActive ? '2px solid #4CAF50' : 'none'
+              }}
+            />
+            
+          </div>
+        </div>
+      </div>
+      
+
       <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
         {/* Default State Column */}
         <div style={{ marginRight: '20px' }}>
@@ -125,14 +189,27 @@ function App() {
         </div>
       </div>
 
-      {/* Label Section */}
-      <div style={{ marginBottom: '20px' }}>
+  
+
+     {/* Label Section */}
+     <div style={{ marginBottom: '20px' }}>
         <h2>Label</h2>
         <div style={{ display: 'inline-block' }}>
-          <Label text="Default Label" onClick={handleLabelClick} /> 
-          <Label text="Disabled Label" disabled onClick={handleLabelClick} /> 
+          <Label
+            text="About"
+            onClick={() => handleLabelClick('About')}
+            active={activePage === 'About'}
+            onMouseEnter={() => handleLabelHover('About')}
+          />
+          <Label
+            text="Projects"
+            onClick={() => handleLabelClick('Projects')}
+            active={activePage === 'Projects'}
+            onMouseEnter={() => handleLabelHover('Projects')}
+          />
         </div>
       </div>
+  
 
       {/* Dropdown Section */}
       <div style={{ marginBottom: '20px' }}>
@@ -149,7 +226,11 @@ function App() {
         </div>
       </div>
     </div>
+
+    
   );
 }
+
+
 
 export default App;

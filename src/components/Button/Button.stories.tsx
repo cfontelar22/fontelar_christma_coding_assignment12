@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Button, { ButtonProps } from './Button.tsx';
@@ -62,4 +61,47 @@ ProjectsButton.args = {
   text: 'Projects',
   backgroundColor: '#FF1493',
   hoverBackgroundColor: '#FF69B4', 
+};
+
+// Add disabled state for each button
+export const DisabledSearchButton = Template.bind({});
+DisabledSearchButton.args = {
+  ...SearchButton.args,
+  disabled: true,
+};
+
+export const DisabledViewButton = Template.bind({});
+DisabledViewButton.args = {
+  ...ViewButton.args,
+  disabled: true,
+};
+
+export const DisabledViewMoreProjectsButton = Template.bind({});
+DisabledViewMoreProjectsButton.args = {
+  ...ViewMoreProjectsButton.args,
+  disabled: true,
+};
+
+export const DisabledLeftArrowButton = Template.bind({});
+DisabledLeftArrowButton.args = {
+  ...LeftArrowButton.args,
+  disabled: true,
+};
+
+export const DisabledRightArrowButton = Template.bind({});
+DisabledRightArrowButton.args = {
+  ...RightArrowButton.args,
+  disabled: true,
+};
+
+export const DisabledAboutButton = Template.bind({});
+DisabledAboutButton.args = {
+  ...AboutButton.args,
+  disabled: true,
+};
+
+export const DisabledProjectsButton = Template.bind({});
+DisabledProjectsButton.args = {
+  ...ProjectsButton.args,
+  disabled: true,
 };

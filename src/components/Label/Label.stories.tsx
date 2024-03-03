@@ -7,21 +7,67 @@ export default {
   component: Label,
   argTypes: {
     text: { control: 'text' },
-    disabled: { control: 'boolean' }, 
+    disabled: { control: 'boolean' },
     onClick: { action: 'clicked' },
-
+    onMouseEnter: { action: 'hovered' },
   },
 } as Meta;
 
 const Template: Story<LabelProps> = (args) => <Label {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
-  text: 'Default Label',
+const labelStyle = {
+  fontSize: '24px',
+  fontWeight: 'bold',
+  padding: '10px',
+  margin: '10px',
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  text: 'Disabled Label',
+export const AboutDefault = Template.bind({});
+AboutDefault.args = {
+  text: 'About',
+};
+AboutDefault.decorators = [
+  (Story) => (
+    <div style={labelStyle}>
+      <Story />
+    </div>
+  ),
+];
+
+export const AboutDisabled = Template.bind({});
+AboutDisabled.args = {
+  text: 'About',
   disabled: true,
 };
+AboutDisabled.decorators = [
+  (Story) => (
+    <div style={labelStyle}>
+      <Story />
+    </div>
+  ),
+];
+
+export const ProjectsDefault = Template.bind({});
+ProjectsDefault.args = {
+  text: 'Projects',
+};
+ProjectsDefault.decorators = [
+  (Story) => (
+    <div style={labelStyle}>
+      <Story />
+    </div>
+  ),
+];
+
+export const ProjectsDisabled = Template.bind({});
+ProjectsDisabled.args = {
+  text: 'Projects',
+  disabled: true,
+};
+ProjectsDisabled.decorators = [
+  (Story) => (
+    <div style={labelStyle}>
+      <Story />
+    </div>
+  ),
+];

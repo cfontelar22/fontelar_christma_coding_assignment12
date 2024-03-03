@@ -5,7 +5,7 @@ export interface DropdownProps {
   options: string[];
   defaultOption?: string;
   disabled?: boolean;
-  onClick?: () => void; // Add onClick prop
+  onClick?: () => void; 
 }
 
 const Container = styled.div`
@@ -30,7 +30,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options, disabled, onClick }) => {
     const selectedOption = e.target.value;
     console.log(`Option "${selectedOption}" clicked`);
     if (onClick) {
-      onClick(); // Invoke onClick event handler if provided
+      onClick(); 
     }
   };
 
