@@ -63,7 +63,6 @@ ProjectsButton.args = {
   hoverBackgroundColor: '#FF69B4', 
 };
 
-// Add disabled state for each button
 export const DisabledSearchButton = Template.bind({});
 DisabledSearchButton.args = {
   ...SearchButton.args,

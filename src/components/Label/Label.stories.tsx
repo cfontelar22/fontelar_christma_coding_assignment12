@@ -24,7 +24,7 @@ const labelStyle = {
 
 export const AboutDefault = Template.bind({});
 AboutDefault.args = {
-  text: 'About',
+  text: 'About Us',
 };
 AboutDefault.decorators = [
   (Story) => (
@@ -36,7 +36,7 @@ AboutDefault.decorators = [
 
 export const AboutDisabled = Template.bind({});
 AboutDisabled.args = {
-  text: 'About',
+  text: 'About Us',
   disabled: true,
 };
 AboutDisabled.decorators = [
@@ -49,7 +49,7 @@ AboutDisabled.decorators = [
 
 export const ProjectsDefault = Template.bind({});
 ProjectsDefault.args = {
-  text: 'Projects',
+  text: 'Our Projects',
 };
 ProjectsDefault.decorators = [
   (Story) => (
@@ -61,7 +61,7 @@ ProjectsDefault.decorators = [
 
 export const ProjectsDisabled = Template.bind({});
 ProjectsDisabled.args = {
-  text: 'Projects',
+  text: 'Our Projects',
   disabled: true,
 };
 ProjectsDisabled.decorators = [
