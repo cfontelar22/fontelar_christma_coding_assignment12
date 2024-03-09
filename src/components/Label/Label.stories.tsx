@@ -5,6 +5,7 @@ import Label, { LabelProps } from './Label.tsx';
 export default {
   title: 'Components/Label',
   component: Label,
+  tags: ['autodocs'],
   argTypes: {
     text: { control: 'text' },
     disabled: { control: 'boolean' },

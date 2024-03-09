@@ -5,6 +5,7 @@ import Img, { ImgProps } from './Img.tsx';
 export default {
   title: 'Components/Img',
   component: Img,
+  tags: ['autodocs'],
   argTypes: {
     onClick: { action: 'clicked' },
     

@@ -5,6 +5,7 @@ import RadioButton, { RadioProps } from './RadioButton.tsx';
 export default {
   title: 'Components/RadioButton',
   component: RadioButton,
+  tags: ['autodocs'],
   argTypes: {
     checked: { control: 'boolean' },
     disabled: { control: 'boolean' },

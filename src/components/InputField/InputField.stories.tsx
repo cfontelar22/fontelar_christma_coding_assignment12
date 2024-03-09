@@ -5,6 +5,7 @@ import InputField, { InputFieldProps } from './InputField.tsx';
 export default {
   title: 'Components/InputField',
   component: InputField,
+  tags: ['autodocs'],
   argTypes: {
     onClick: { action: 'clicked' },
     onMouseEnter: { action: 'hovered' },

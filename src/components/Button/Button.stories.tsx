@@ -5,12 +5,14 @@ import Button, { ButtonProps } from './Button.tsx';
 export default {
   title: 'Components/Button',
   component: Button,
+  tags: ['autodocs'],
   argTypes: {
     disabled: { control: 'boolean' }, 
     onClick: { action: 'clicked' },
     onMouseEnter: { action: 'hovered' }, 
   },
 } as Meta;
+
 
 const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
@@ -104,3 +106,4 @@ DisabledProjectsButton.args = {
   ...ProjectsButton.args,
   disabled: true,
 };
+

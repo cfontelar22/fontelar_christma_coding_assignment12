@@ -6,6 +6,7 @@ import { TextProps } from './Text.types.tsx';
 export default {
   title: 'Components/Text',
   component: Text,
+  tags: ['autodocs'],
   argTypes: {
     text: { control: 'text' },
     color: { control: 'color' },

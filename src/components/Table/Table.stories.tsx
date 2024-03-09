@@ -5,6 +5,7 @@ import Table, { TableProps } from './Table.tsx';
 export default {
   title: 'Components/Table',
   component: Table,
+  tags: ['autodocs'],
   argTypes: {
     backgroundColor: { control: { type: 'color', disabled: ({ disabled }) => disabled } },
     disabled: { control: 'boolean' },

@@ -6,6 +6,7 @@ import { CardProps } from './Card.types';
 export default {
   title: 'Components/Card',
   component: Card,
+  tags: ['autodocs'],
   argTypes: {
     onClick: { action: 'clicked' },
   },

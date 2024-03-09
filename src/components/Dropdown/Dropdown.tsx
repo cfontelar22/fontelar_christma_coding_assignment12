@@ -36,7 +36,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options, disabled, onClick }) => {
 
   return (
     <Container>
-      <Select disabled={disabled} onChange={handleOptionClick} backgroundColor="#fff"> {/* Pass backgroundColor prop */}
+      <Select disabled={disabled} onChange={handleOptionClick} backgroundColor="#fff"> 
         {options.map((option, index) => (
           <option key={index} value={option}>{option}</option>
         ))}

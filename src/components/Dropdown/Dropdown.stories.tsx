@@ -5,6 +5,7 @@ import Dropdown, { DropdownProps } from './Dropdown.tsx';
 export default {
   title: 'Components/Dropdown',
   component: Dropdown,
+  tags: ['autodocs'],
   argTypes: {
     disabled: { control: 'boolean' }, // Only include the 'disabled' boolean control
   },
