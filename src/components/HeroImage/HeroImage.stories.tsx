@@ -1,8 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
+import HeroImage from './HeroImage.tsx'; 
 import { HeroImageProps } from './HeroImage.types.tsx';
-import HeroImage from './HeroImage.tsx';
-
 
 export default {
   title: 'Components/HeroImage',
@@ -11,14 +10,36 @@ export default {
   argTypes: {
     imageUrl: { control: 'text' },
     title: { control: 'text' },
+    subtitle: { control: 'text' },
     description: { control: 'text' },
+    onClick: { action: 'clicked' }, 
+    disabled: { control: 'boolean' }, 
+    backgroundColor: { control: 'color' }, 
   },
 } as Meta;
 
-const Template: Story<HeroImageProps> = (args) => <HeroImage {...args} />;
+export const Default: Story<HeroImageProps> = (args) => (
+  <HeroImage
+    onClick={() => console.log('HeroImage clicked')}
+    {...args} 
+  />
+);
 
-export const Default = Template.bind({});
 Default.args = {
+  imageUrl: 'https://images.unsplash.com/photo-1543269865-cbf427effbad',
+  title: 'WELCOME TO MY PORTFOLIO',
+  subtitle: 'I AM CHRISTMA FONTELAR',
+  description: 'Explore my projects and experience.',
+};
+
+export const Disabled: Story<HeroImageProps> = (args) => (
+  <HeroImage
+    disabled
+    {...args} 
+  />
+);
+
+Disabled.args = {
   imageUrl: 'https://images.unsplash.com/photo-1543269865-cbf427effbad',
   title: 'WELCOME TO MY PORTFOLIO',
   subtitle: 'I AM CHRISTMA FONTELAR',

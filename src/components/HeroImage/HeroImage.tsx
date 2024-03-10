@@ -6,15 +6,20 @@ interface HeroImageProps {
   title: string;
   subtitle: string;
   description: string;
+  disabled?: boolean;
+  onClick?: () => void;
+  backgroundColor?: string; // Add backgroundColor prop
 }
 
-const Container = styled.div<{ imageUrl: string }>`
+const Container = styled.div<{ backgroundColor?: string }>`
   position: relative;
   width: 100%;
-  height: 400px; 
-  background-size: cover;
-  background-position: center;
-  background-image: ${(props) => `url(${props.imageUrl})`};
+  background-color: ${({ backgroundColor }) => backgroundColor}; // Apply background color here
+`;
+
+const Image = styled.img`
+  width: 100%;
+  height: auto;
 `;
 
 const Content = styled.div`
@@ -23,33 +28,53 @@ const Content = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: white;
+  color: #fff;
 `;
 
 const Title = styled.h1`
-  font-size: 4rem; 
-  margin-bottom: 10px;
-  font-weight: bold; 
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
-  color: black;
+  font-size: 36px;
+  margin-bottom: 16px;
 `;
 
-const Subtitle = styled.p`
-  font-size: 2.5rem; 
-  font-weight: bold; 
-  margin-bottom: 20px;
-  color: black;
+const Subtitle = styled.h2`
+  font-size: 24px;
+  margin-bottom: 16px;
 `;
 
 const Description = styled.p`
-  font-size: 1.8rem; 
-  font-weight: bold; 
-  color: black;
+  font-size: 18px;
+  margin-bottom: 16px;
 `;
 
-const HeroImage: React.FC<HeroImageProps> = ({ imageUrl, title, subtitle, description }) => {
+const Overlay = styled.div<{ disabled?: boolean }>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+`;
+
+const HeroImage: React.FC<HeroImageProps> = ({
+  imageUrl,
+  title,
+  subtitle,
+  description,
+  disabled,
+  onClick,
+  backgroundColor, 
+}) => {
+  const handleClick = () => {
+    if (!disabled && onClick) {
+      onClick();
+    }
+  };
+
   return (
-    <Container imageUrl={imageUrl}>
+    <Container backgroundColor={backgroundColor}> {/* Pass backgroundColor prop to Container */}
+      <Image src={imageUrl} alt={title} />
+      <Overlay disabled={disabled} onClick={handleClick} />
       <Content>
         <Title>{title}</Title>
         <Subtitle>{subtitle}</Subtitle>

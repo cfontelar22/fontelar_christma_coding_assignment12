@@ -1,22 +1,21 @@
 import React from 'react';
-import styled, { css } from 'styled-components'; // Import css function
+import styled, { css } from 'styled-components';
 
 interface CardProps {
-    title: string;
-    subtitle: string;
-    description: string;
-    image: string;
-    backgroundColor?: string;
-    onClick?: () => void;
-    disabled?: boolean;
-  }
-  
+  title: string;
+  subtitle?: string;
+  description?: string;
+  image: string;
+  backgroundColor?: string;
+  onClick?: () => void;
+  disabled?: boolean;
+}
 
-  const StyledCard = styled.div<{ disabled?: boolean }>`
+const StyledCard = styled.div<{ disabled?: boolean; backgroundColor?: string }>`
   width: 300px;
-  background-color: #fff;
+  background-color: ${({ backgroundColor }) => backgroundColor || '#fff'};
   border-radius: 10px;
-  border: 2px solid #000; 
+  border: 2px solid #000;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
@@ -32,7 +31,6 @@ interface CardProps {
       border-color: #ccc;
     `}
 `;
-
 
 const Image = styled.img`
   width: 100%;
@@ -62,23 +60,23 @@ const Description = styled.p`
   color: #333;
 `;
 
-const Card: React.FC<CardProps> = ({ title, subtitle, description, image, disabled, onClick }) => {
-    const handleClick = () => {
-      if (!disabled && onClick) {
-        onClick();
-      }
-    };
-  
-    return (
-      <StyledCard disabled={disabled} onClick={handleClick}>
-        <Image src={image} alt={title} />
-        <Content>
-          <Title>{title}</Title>
-          {subtitle && <Subtitle>{subtitle}</Subtitle>}
-          {description && <Description>{description}</Description>}
-        </Content>
-      </StyledCard>
-    );
+const Card: React.FC<CardProps> = ({ title, subtitle, description, image, backgroundColor, disabled, onClick }) => {
+  const handleClick = () => {
+    if (!disabled && onClick) {
+      onClick();
+    }
   };
-  
+
+  return (
+    <StyledCard backgroundColor={backgroundColor} disabled={disabled} onClick={handleClick}>
+      <Image src={image} alt={title} />
+      <Content>
+        <Title>{title}</Title>
+        {subtitle && <Subtitle>{subtitle}</Subtitle>}
+        {description && <Description>{description}</Description>}
+      </Content>
+    </StyledCard>
+  );
+};
+
 export default Card;

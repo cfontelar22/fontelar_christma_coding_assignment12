@@ -9,12 +9,15 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     onClick: { action: 'clicked' },
+    backgroundColor: { control: 'color' }, 
+
   },
 } as Meta;
 
-const Template: Story<CardProps> = (args) => <Card {...args} />;
+export const Default: Story<CardProps> = (args) => (
+  <Card {...args} />
+);
 
-export const Default = Template.bind({});
 Default.args = {
   title: 'Project 1',
   subtitle: 'Point to Point Network Wireless Bridge',
@@ -22,7 +25,10 @@ Default.args = {
   image: 'https://via.placeholder.com/300',
 };
 
-export const Disabled = Template.bind({});
+export const Disabled: Story<CardProps> = (args) => (
+  <Card {...args} />
+);
+
 Disabled.args = {
   title: 'Project 1',
   subtitle: 'Point to Point Network Wireless Bridge',

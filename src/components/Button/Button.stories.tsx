@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import Button, { ButtonProps } from './Button.tsx';
 
 export default {
@@ -7,103 +7,97 @@ export default {
   component: Button,
   tags: ['autodocs'],
   argTypes: {
-    disabled: { control: 'boolean' }, 
+    text: { control: 'text' },
+    backgroundColor: { control: 'color' },
+    hoverBackgroundColor: { control: 'color' },
+    disabled: { control: 'boolean' },
     onClick: { action: 'clicked' },
-    onMouseEnter: { action: 'hovered' }, 
+    onMouseEnter: { action: 'hovered' },
   },
 } as Meta;
 
+// Regular components for each story
+export const SearchButton: React.FC<ButtonProps> = ({ text = 'Search', backgroundColor = '#2E86C1', hoverBackgroundColor = '#4682B4', ...args }) => (
+  <Button {...args} text={text} backgroundColor={backgroundColor} hoverBackgroundColor={hoverBackgroundColor} />
+);
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+(SearchButton as any).storyName = 'Search';
 
-export const SearchButton = Template.bind({});
-SearchButton.args = {
-  text: 'Search',
-  backgroundColor: '#2E86C1',
-  hoverBackgroundColor: '#4682B4', 
-};
+export const ViewButton: React.FC<ButtonProps> = ({ text = 'View', backgroundColor = '#F39C12', hoverBackgroundColor = '#FFA500', ...args }) => (
+  <Button {...args} text={text} backgroundColor={backgroundColor} hoverBackgroundColor={hoverBackgroundColor} />
+);
+ 
+(ViewButton as any).storyName = 'View';
 
-export const ViewButton = Template.bind({});
-ViewButton.args = {
-  text: 'View',
-  backgroundColor: '#F39C12',
-  hoverBackgroundColor: '#FFA500', 
-};
+export const ViewMoreProjectsButton: React.FC<ButtonProps> = ({ text = 'View More Projects', backgroundColor = '#27AE60', hoverBackgroundColor = '#2ECC71', ...args }) => (
+  <Button {...args} text={text} backgroundColor={backgroundColor} hoverBackgroundColor={hoverBackgroundColor} />
+);
 
-export const ViewMoreProjectsButton = Template.bind({});
-ViewMoreProjectsButton.args = {
-  text: 'View More Projects',
-  backgroundColor: '#27AE60',
-  hoverBackgroundColor: '#32CD32', 
-};
+(ViewMoreProjectsButton as any).storyName = 'View More Projects';
 
-export const LeftArrowButton = Template.bind({});
-LeftArrowButton.args = {
-  text: '<',
-  backgroundColor: '#2E86C1',
-  hoverBackgroundColor: '#4682B4', 
-};
+export const LeftArrowButton: React.FC<ButtonProps> = ({ text = 'Left Arrow', backgroundColor = '#8E44AD', hoverBackgroundColor = '#9B59B6', ...args }) => (
+  <Button {...args} text={text} backgroundColor={backgroundColor} hoverBackgroundColor={hoverBackgroundColor} />
+);
 
-export const RightArrowButton = Template.bind({});
-RightArrowButton.args = {
-  text: '>',
-  backgroundColor: '#F39C12',
-  hoverBackgroundColor: '#FFA500', 
-};
+(LeftArrowButton as any).storyName = 'Left Arrow';
 
-export const AboutButton = Template.bind({});
-AboutButton.args = {
-  text: 'About',
-  backgroundColor: '#6A5ACD',
-  hoverBackgroundColor: '#9370DB', 
-};
+export const RightArrowButton: React.FC<ButtonProps> = ({ text = 'Right Arrow', backgroundColor = '#E74C3C', hoverBackgroundColor = '#C0392B', ...args }) => (
+  <Button {...args} text={text} backgroundColor={backgroundColor} hoverBackgroundColor={hoverBackgroundColor} />
+);
 
-export const ProjectsButton = Template.bind({});
-ProjectsButton.args = {
-  text: 'Projects',
-  backgroundColor: '#FF1493',
-  hoverBackgroundColor: '#FF69B4', 
-};
+(RightArrowButton as any).storyName = 'Right Arrow';
 
-export const DisabledSearchButton = Template.bind({});
-DisabledSearchButton.args = {
-  ...SearchButton.args,
-  disabled: true,
-};
+export const AboutButton: React.FC<ButtonProps> = ({ text = 'About', backgroundColor = '#3498DB', hoverBackgroundColor = '#2980B9', ...args }) => (
+  <Button {...args} text={text} backgroundColor={backgroundColor} hoverBackgroundColor={hoverBackgroundColor} />
+);
 
-export const DisabledViewButton = Template.bind({});
-DisabledViewButton.args = {
-  ...ViewButton.args,
-  disabled: true,
-};
+(AboutButton as any).storyName = 'About';
 
-export const DisabledViewMoreProjectsButton = Template.bind({});
-DisabledViewMoreProjectsButton.args = {
-  ...ViewMoreProjectsButton.args,
-  disabled: true,
-};
+export const ProjectsButton: React.FC<ButtonProps> = ({ text = 'Projects', backgroundColor = '#1ABC9C', hoverBackgroundColor = '#16A085', ...args }) => (
+  <Button {...args} text={text} backgroundColor={backgroundColor} hoverBackgroundColor={hoverBackgroundColor} />
+);
 
-export const DisabledLeftArrowButton = Template.bind({});
-DisabledLeftArrowButton.args = {
-  ...LeftArrowButton.args,
-  disabled: true,
-};
+(ProjectsButton as any).storyName = 'Projects';
 
-export const DisabledRightArrowButton = Template.bind({});
-DisabledRightArrowButton.args = {
-  ...RightArrowButton.args,
-  disabled: true,
-};
+// Disabled buttons
+export const DisabledSearchButton: React.FC<ButtonProps> = ({ text = 'Search', backgroundColor = '#2E86C1', hoverBackgroundColor = '#4682B4', disabled = true, ...args }) => (
+  <Button {...args} text={text} backgroundColor={backgroundColor} hoverBackgroundColor={hoverBackgroundColor} disabled={disabled} />
+);
 
-export const DisabledAboutButton = Template.bind({});
-DisabledAboutButton.args = {
-  ...AboutButton.args,
-  disabled: true,
-};
+(DisabledSearchButton as any).storyName = 'Search (Disabled)';
 
-export const DisabledProjectsButton = Template.bind({});
-DisabledProjectsButton.args = {
-  ...ProjectsButton.args,
-  disabled: true,
-};
+export const DisabledViewButton: React.FC<ButtonProps> = ({ text = 'View', backgroundColor = '#F39C12', hoverBackgroundColor = '#FFA500', disabled = true, ...args }) => (
+  <Button {...args} text={text} backgroundColor={backgroundColor} hoverBackgroundColor={hoverBackgroundColor} disabled={disabled} />
+);
 
+(DisabledViewButton as any).storyName = 'View (Disabled)';
+
+export const DisabledViewMoreProjectsButton: React.FC<ButtonProps> = ({ text = 'View More Projects', backgroundColor = '#27AE60', hoverBackgroundColor = '#2ECC71', disabled = true, ...args }) => (
+  <Button {...args} text={text} backgroundColor={backgroundColor} hoverBackgroundColor={hoverBackgroundColor} disabled={disabled} />
+);
+
+(DisabledViewMoreProjectsButton as any).storyName = 'View More Projects (Disabled)';
+
+export const DisabledLeftArrowButton: React.FC<ButtonProps> = ({ text = 'Left Arrow', backgroundColor = '#8E44AD', hoverBackgroundColor = '#9B59B6', disabled = true, ...args }) => (
+  <Button {...args} text={text} backgroundColor={backgroundColor} hoverBackgroundColor={hoverBackgroundColor} disabled={disabled} />
+);
+
+(DisabledLeftArrowButton as any).storyName = 'Left Arrow (Disabled)';
+
+export const DisabledRightArrowButton: React.FC<ButtonProps> = ({ text = 'Right Arrow', backgroundColor = '#E74C3C', hoverBackgroundColor = '#C0392B', disabled = true, ...args }) => (
+  <Button {...args} text={text} backgroundColor={backgroundColor} hoverBackgroundColor={hoverBackgroundColor} disabled={disabled} />
+);
+
+(DisabledRightArrowButton as any).storyName = 'Right Arrow (Disabled)';
+
+export const DisabledAboutButton: React.FC<ButtonProps> = ({ text = 'About', backgroundColor = '#3498DB', hoverBackgroundColor = '#2980B9', disabled = true, ...args }) => (
+  <Button {...args} text={text} backgroundColor={backgroundColor} hoverBackgroundColor={hoverBackgroundColor} disabled={disabled} />
+);
+
+(DisabledAboutButton as any).storyName = 'About (Disabled)';
+
+export const DisabledProjectsButton: React.FC<ButtonProps> = ({ text = 'Projects', backgroundColor = '#1ABC9C', hoverBackgroundColor = '#16A085', disabled = true, ...args }) => (
+  <Button {...args} text={text} backgroundColor={backgroundColor} hoverBackgroundColor={hoverBackgroundColor} disabled={disabled} />
+);
+
+(DisabledProjectsButton as any).storyName = 'Projects (Disabled)';

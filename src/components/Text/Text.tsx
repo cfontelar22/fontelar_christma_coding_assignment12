@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-interface TextProps {
+export interface TextProps {
   text?: string;
   color?: string;
   fontSize?: string;
   fontWeight?: string;
-  disabled?: boolean; // Add disabled prop
+  disabled?: boolean; 
 }
 
 const StyledText = styled.span<TextProps>`
@@ -21,7 +21,7 @@ const Text: React.FC<TextProps> = ({ text, ...rest }) => {
 };
 
 (Text as React.FC<{ text: string }>).defaultProps = {
-  text: 'Sample Text',
+  text: 'As a network engineer, I specialize in designing, implementing, and managing computer networks.',
 };
 
 export default Text;

@@ -16,14 +16,46 @@ export default {
 
 const categories = ['Brand City', 'Design Avenue', 'Social Media District', 'UX Factory', 'Web Town'];
 
-const Template: Story<TableProps> = (args) => <Table {...args} />;
+const TableHeader = () => (
+  <thead>
+    <tr>
+      <th>Category</th>
+    </tr>
+  </thead>
+);
 
-export const Default = Template.bind({});
+const TableFooter = () => (
+  <tfoot>
+    <tr>
+      <td>Total categories: {categories.length}</td>
+    </tr>
+  </tfoot>
+);
+
+const TableCell = ({ category }: { category: string }) => (
+  <tr>
+    <td>{category}</td>
+  </tr>
+);
+
+const Template: Story<TableProps> = (args) => (
+  <Table {...args}>
+    <TableHeader />
+    <tbody>
+      {args.categories.map((category: string, index: number) => (
+        <TableCell key={index} category={category} />
+      ))}
+    </tbody>
+    <TableFooter />
+  </Table>
+);
+
+export const Default: Story<TableProps> = Template.bind({});
 Default.args = {
   categories,
 };
 
-export const Disabled = Template.bind({});
+export const Disabled: Story<TableProps> = Template.bind({});
 Disabled.args = {
   categories,
   disabled: true,

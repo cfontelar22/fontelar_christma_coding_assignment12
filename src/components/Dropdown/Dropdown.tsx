@@ -5,7 +5,8 @@ export interface DropdownProps {
   options: string[];
   defaultOption?: string;
   disabled?: boolean;
-  onClick?: () => void; 
+  onClick?: (selectedOption: string) => void;
+  backgroundColor?: string; 
 }
 
 const Container = styled.div`
@@ -21,22 +22,22 @@ const Select = styled.select<{ disabled?: boolean; backgroundColor?: string }>`
   background-color: ${(props) => props.backgroundColor || (props.disabled ? '#f5f5f5' : '#fff')};
   color: ${(props) => (props.disabled ? '#999' : '#333')};
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
-  width: 200px; /* Adjust width for responsiveness */
-  max-width: 100%; /* Ensure dropdown doesn't overflow on smaller screens */
+  width: 200px; 
+  max-width: 100%;
 `;
 
-const Dropdown: React.FC<DropdownProps> = ({ options, disabled, onClick }) => {
+const Dropdown: React.FC<DropdownProps> = ({ options, disabled, onClick, backgroundColor }) => {
   const handleOptionClick = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedOption = e.target.value;
     console.log(`Option "${selectedOption}" clicked`);
     if (onClick) {
-      onClick(); 
+      onClick(selectedOption); 
     }
   };
 
   return (
     <Container>
-      <Select disabled={disabled} onChange={handleOptionClick} backgroundColor="#fff"> 
+      <Select disabled={disabled} onChange={handleOptionClick} backgroundColor={backgroundColor}>
         {options.map((option, index) => (
           <option key={index} value={option}>{option}</option>
         ))}

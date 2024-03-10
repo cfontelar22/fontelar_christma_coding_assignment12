@@ -12,63 +12,27 @@ export default {
     onClick: { action: 'clicked' },
     onMouseEnter: { action: 'hovered' },
   },
+  decorators: [
+    (Story) => (
+      <div style={{ fontSize: '24px', fontWeight: 'bold', padding: '10px', margin: '10px' }}>
+        <Story />
+      </div>
+    ),
+  ],
 } as Meta;
 
-const Template: Story<LabelProps> = (args) => <Label {...args} />;
-
-const labelStyle = {
-  fontSize: '24px',
-  fontWeight: 'bold',
-  padding: '10px',
-  margin: '10px',
+const defaultLabelProps: LabelProps = {
+  text: 'Label Text',
 };
 
-export const AboutDefault = Template.bind({});
-AboutDefault.args = {
-  text: 'About Us',
-};
-AboutDefault.decorators = [
-  (Story) => (
-    <div style={labelStyle}>
-      <Story />
-    </div>
-  ),
-];
+export const AboutDefault: Story<LabelProps> = (args) => <Label {...args} />;
+AboutDefault.args = { ...defaultLabelProps, text: 'About Us' };
 
-export const AboutDisabled = Template.bind({});
-AboutDisabled.args = {
-  text: 'About Us',
-  disabled: true,
-};
-AboutDisabled.decorators = [
-  (Story) => (
-    <div style={labelStyle}>
-      <Story />
-    </div>
-  ),
-];
+export const AboutDisabled: Story<LabelProps> = (args) => <Label {...args} />;
+AboutDisabled.args = { ...defaultLabelProps, text: 'About Us', disabled: true };
 
-export const ProjectsDefault = Template.bind({});
-ProjectsDefault.args = {
-  text: 'Our Projects',
-};
-ProjectsDefault.decorators = [
-  (Story) => (
-    <div style={labelStyle}>
-      <Story />
-    </div>
-  ),
-];
+export const ProjectsDefault: Story<LabelProps> = (args) => <Label {...args} />;
+ProjectsDefault.args = { ...defaultLabelProps, text: 'Our Projects' };
 
-export const ProjectsDisabled = Template.bind({});
-ProjectsDisabled.args = {
-  text: 'Our Projects',
-  disabled: true,
-};
-ProjectsDisabled.decorators = [
-  (Story) => (
-    <div style={labelStyle}>
-      <Story />
-    </div>
-  ),
-];
+export const ProjectsDisabled: Story<LabelProps> = (args) => <Label {...args} />;
+ProjectsDisabled.args = { ...defaultLabelProps, text: 'Our Projects', disabled: true };

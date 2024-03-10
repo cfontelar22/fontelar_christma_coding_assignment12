@@ -9,23 +9,32 @@ const StyledImg = styled.img<{ disabled?: boolean }>`
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 `;
 
+const Container = styled.div<{ backgroundColor?: string }>`
+  background-color: ${({ backgroundColor }) => backgroundColor || 'transparent'};
+`;
+
 interface ImgProps {
-    src: string;
-    alt: string;
-    className?: string;
+  src: string;
+  alt: string;
+  className?: string;
+  backgroundColor?: string;
+  disabled?: boolean; 
 }
-  
-const Img: React.FC<ImgProps> = ({ src, alt, className, ...rest }) => {
-  return <StyledImg src={src} alt={alt} className={className} {...rest} />;
+
+const Img: React.FC<ImgProps> = ({ src, alt, className, backgroundColor, disabled, ...rest }) => {
+  return (
+    <Container backgroundColor={backgroundColor}>
+      <StyledImg src={src} alt={alt} className={className} disabled={disabled} {...rest} />
+    </Container>
+  );
 };
 
 Img.propTypes = {
-  /** Image source URL */
   src: PropTypes.string.isRequired,
-  /** Alternate text for the image */
   alt: PropTypes.string.isRequired,
-  /** Additional CSS classes */
   className: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 export default Img;

@@ -15,7 +15,6 @@ const TableContainer = styled.table`
   border-collapse: collapse;
 `;
 
-
 const CategoryRow = styled.tr<{ backgroundColor?: string; disabled?: boolean }>`
   background-color: ${({ backgroundColor }) => backgroundColor || '#327573'};
   color: white;
@@ -48,6 +47,11 @@ const Table: React.FC<TableProps> = ({ categories, onClickCategory, backgroundCo
 
   return (
     <TableContainer>
+      <thead>
+        <tr>
+          <th>Categories</th>
+        </tr>
+      </thead>
       <tbody>
         {categories.map((category, index) => (
           <CategoryRow
@@ -61,6 +65,11 @@ const Table: React.FC<TableProps> = ({ categories, onClickCategory, backgroundCo
           </CategoryRow>
         ))}
       </tbody>
+      <tfoot>
+        <tr>
+          <td>Total categories: {categories.length}</td>
+        </tr>
+      </tfoot>
     </TableContainer>
   );
 };

@@ -7,20 +7,30 @@ export default {
   component: Dropdown,
   tags: ['autodocs'],
   argTypes: {
-    disabled: { control: 'boolean' }, // Only include the 'disabled' boolean control
+    onClick: { action: 'selected' }, 
+    disabled: { control: 'boolean' }, 
+    backgroundColor: { control: 'color' }, 
   },
 } as Meta;
 
-const Template: Story<DropdownProps> = (args) => <Dropdown {...args} />;
+export const Default: Story<DropdownProps> = (args) => (
+  <Dropdown 
+    onClick={() => console.log('Dropdown clicked')} 
+    {...args} // Pass all args including backgroundColor
+  />
+);
 
-export const Default = Template.bind({});
 Default.args = {
   options: ['Brand City', 'Design Avenue', 'Social Media District', 'UX Factory', 'Web Town'],
-  onClick: () => console.log('Dropdown clicked'), 
 };
 
-export const Disabled = Template.bind({});
+export const Disabled: Story<DropdownProps> = (args) => (
+  <Dropdown 
+    disabled
+    {...args} // Pass all args including backgroundColor
+  />
+);
+
 Disabled.args = {
   options: ['Brand City', 'Design Avenue', 'Social Media District', 'UX Factory', 'Web Town'],
-  disabled: true,
 };

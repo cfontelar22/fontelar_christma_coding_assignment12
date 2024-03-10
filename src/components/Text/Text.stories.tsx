@@ -1,7 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Text from './Text.tsx';
-import { TextProps } from './Text.types.tsx'; 
+import Text, { TextProps } from './Text.tsx'; 
 
 export default {
   title: 'Components/Text',
@@ -9,29 +8,24 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     text: { control: 'text' },
-    color: { control: 'color' },
-    fontSize: { control: 'text' },
-    fontWeight: { control: 'text' },
-    disabled: { control: 'boolean' },
+    color: { control: { type: 'color', value: 'blue' } }, 
+    disabled: { control: 'boolean' }, 
   },
 } as Meta;
 
-const Template: Story<TextProps> = (args) => <Text {...args} />;
-
-export const CustomStyle = Template.bind({});
-CustomStyle.args = {
-  text: 'Hello World!',
+export const Default: Story<TextProps> = (args) => (
+  <Text {...args} />
+);
+Default.args = {
+  text: 'As a network engineer, I specialize in designing, implementing, and managing computer networks.',
   color: 'blue',
-  fontSize: '20px',
-  fontWeight: 'bold',
 };
 
-export const Disabled = Template.bind({});
+export const Disabled: Story<TextProps> = (args) => (
+  <Text {...args} />
+);
 Disabled.args = {
-  text: 'Disabled Text',
+  text: 'As a network engineer, I specialize in designing, implementing, and managing computer networks.',
   color: 'gray',
-  fontSize: '16px',
-  fontWeight: 'normal',
-  disabled: false 
+  disabled: true,
 };
-            

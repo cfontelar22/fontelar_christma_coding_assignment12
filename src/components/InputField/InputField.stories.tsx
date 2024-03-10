@@ -7,21 +7,26 @@ export default {
   component: InputField,
   tags: ['autodocs'],
   argTypes: {
+    disabled: { control: 'boolean' },
+    backgroundColor: { control: 'color' }, 
     onClick: { action: 'clicked' },
     onMouseEnter: { action: 'hovered' },
-    disabled: { control: 'boolean' }, // Add control for the disabled prop
   },
 } as Meta;
 
-const Template: Story<InputFieldProps> = (args) => <InputField {...args} />;
+// Story for the Default InputField
+export const Default: Story<InputFieldProps> = (args) => <InputField {...args} />;
 
-export const Default = Template.bind({});
 Default.args = {
   placeholder: 'Keyword Search',
 };
 
-export const Disabled = Template.bind({});
+// Story for the Disabled InputField
+export const Disabled: Story<InputFieldProps> = (args) => <InputField {...args} />;
+
 Disabled.args = {
   placeholder: 'Keyword Search',
-  disabled: true, // Set disabled prop to true
+  disabled: true,
+  backgroundColor: '#f5f5f5', 
 };
+
