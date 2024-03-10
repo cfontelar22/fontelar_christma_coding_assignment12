@@ -16,7 +16,7 @@ export default {
 export const Default: Story<DropdownProps> = (args) => (
   <Dropdown 
     onClick={() => console.log('Dropdown clicked')} 
-    {...args} // Pass all args including backgroundColor
+    {...args} 
   />
 );
 
@@ -27,7 +27,7 @@ Default.args = {
 export const Disabled: Story<DropdownProps> = (args) => (
   <Dropdown 
     disabled
-    {...args} // Pass all args including backgroundColor
+    {...args} 
   />
 );
 

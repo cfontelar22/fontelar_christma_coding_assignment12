@@ -8,7 +8,7 @@ interface HeroImageProps {
   description: string;
   disabled?: boolean;
   onClick?: () => void;
-  backgroundColor?: string; // Add backgroundColor prop
+  backgroundColor?: string; 
 }
 
 const Container = styled.div<{ backgroundColor?: string }>`

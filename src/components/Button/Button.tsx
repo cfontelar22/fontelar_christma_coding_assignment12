@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  text?: string; // Make text prop optional
+  text?: string; 
   backgroundColor?: string;
   hoverBackgroundColor?: string;
 }
