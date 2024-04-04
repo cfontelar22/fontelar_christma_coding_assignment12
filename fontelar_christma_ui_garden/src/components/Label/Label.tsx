@@ -23,7 +23,7 @@ const StyledLabel = styled.label<{ disabled?: boolean; clicked?: boolean; hovere
 `;
 
 const Label: React.FC<LabelProps> = ({ text, disabled, onClick, onMouseEnter }) => {
-  const [clicked, setClicked] = useState(false); // State to track clicked state
+  const [clicked, setClicked] = useState<boolean | undefined>(false); // State to track clicked state
 
   const handleClick = () => {
     if (onClick && !disabled) {
@@ -43,7 +43,7 @@ const Label: React.FC<LabelProps> = ({ text, disabled, onClick, onMouseEnter }) 
   return (
     <StyledLabel
       disabled={disabled}
-      clicked={clicked}
+      clicked={clicked ? true : undefined} // Pass clicked only if true, otherwise omit
       onMouseEnter={handleMouseEnter} // Pass onMouseEnter event handler
       onClick={handleClick}
     >
@@ -51,6 +51,7 @@ const Label: React.FC<LabelProps> = ({ text, disabled, onClick, onMouseEnter }) 
     </StyledLabel>
   );
 };
+
 
 Label.propTypes = {
   text: PropTypes.string.isRequired,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { within, userEvent } from '@storybook/testing-library';
-import Table, { TableProps } from './Table.tsx';
+import Table, { TableProps } from './Table';
 
 export default {
   title: 'Components/Table',

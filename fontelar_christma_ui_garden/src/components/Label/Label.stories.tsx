@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { within, userEvent } from '@storybook/testing-library';
-import Label, { LabelProps } from './Label.tsx';
+import Label, { LabelProps } from './Label';
 
 export default {
   title: 'Components/Label',

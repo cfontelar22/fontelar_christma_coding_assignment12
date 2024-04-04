@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  text?: string; 
+  text?: string;
   backgroundColor?: string;
   hoverBackgroundColor?: string;
 }
 
-const StyledButton = styled.button<ButtonProps>`
+// Using shouldForwardProp to filter out non-DOM props
+const StyledButton = styled.button.withConfig({
+  shouldForwardProp: (prop) => !['backgroundColor', 'hoverBackgroundColor'].includes(prop),
+})<{ backgroundColor?: string; hoverBackgroundColor?: string }>`
   padding: 10px 20px;
   font-size: 16px;
   border: none;
@@ -24,7 +27,7 @@ const StyledButton = styled.button<ButtonProps>`
   }
 
   &:hover:not(:disabled) {
-    background-color: ${({ hoverBackgroundColor, backgroundColor }) => hoverBackgroundColor || backgroundColor};
+    background-color: ${({ hoverBackgroundColor, backgroundColor }) => hoverBackgroundColor || backgroundColor || '#008080'};
   }
 
   &:disabled {
@@ -38,19 +41,10 @@ const StyledButton = styled.button<ButtonProps>`
   }
 `;
 
-const Button: React.FC<ButtonProps> = ({
-  text = 'Button',
-  backgroundColor,
-  hoverBackgroundColor,
-  ...props
-}) => {
+const Button: React.FC<ButtonProps> = ({ text = 'Button', ...props }) => {
   return (
     <div style={{ display: 'inline-block', marginRight: '10px' }}>
-      <StyledButton
-        backgroundColor={backgroundColor}
-        hoverBackgroundColor={hoverBackgroundColor}
-        {...props}
-      >
+      <StyledButton {...props}>
         {text}
       </StyledButton>
     </div>

@@ -1,2 +1,2 @@
-export { default as Table } from './Table.tsx';
+export { default as Table } from './Table';
 export type { TableProps } from './Table.types';

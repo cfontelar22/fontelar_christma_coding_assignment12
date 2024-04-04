@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { within, userEvent } from '@storybook/testing-library';
-import Text, { TextProps } from './Text.tsx'; 
+import Text, { TextProps } from './Text'; 
 
 export default {
   title: 'Components/Text',

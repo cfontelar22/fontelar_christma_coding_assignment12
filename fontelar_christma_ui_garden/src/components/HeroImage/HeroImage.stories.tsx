@@ -1,8 +1,8 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { within, userEvent } from '@storybook/testing-library';
-import HeroImage from './HeroImage.tsx';
-import { HeroImageProps } from './HeroImage.types.tsx';
+import HeroImage from './HeroImage';
+import { HeroImageProps } from './HeroImage.types';
 
 export default {
   title: 'Components/HeroImage',

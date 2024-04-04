@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { within, userEvent } from '@storybook/testing-library';
-import RadioButton, { RadioProps } from './RadioButton.tsx';
+import RadioButton, { RadioProps } from './RadioButton';
 
 export default {
   title: 'Components/RadioButton',
@@ -32,6 +32,3 @@ Disabled.args = {
   label: 'Avion',
   disabled: true,
 };
-// Disabled story does not need a play function since it's non-interactive
-
-// Add more explicit stories here as needed, following the pattern above.

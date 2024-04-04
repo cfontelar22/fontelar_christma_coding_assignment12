@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import InputField, { InputFieldProps } from './InputField.tsx'; 
+import { within, userEvent } from '@storybook/testing-library';
+import InputField, { InputFieldProps } from './InputField';
 
 export default {
   title: 'Components/InputField',
@@ -12,21 +13,23 @@ export default {
     onClick: { action: 'clicked' },
     onMouseEnter: { action: 'hovered' },
   },
-} as Meta;
+} as Meta<InputFieldProps>;
 
-// Story for the Default InputField
 export const Default: Story<InputFieldProps> = (args) => <InputField {...args} />;
-
 Default.args = {
   placeholder: 'Keyword Search',
 };
+Default.play = async ({ args, canvasElement }) => {
+  const canvas = within(canvasElement);
+  const placeholderText = args.placeholder || 'Default Placeholder';
+  const input = await canvas.getByPlaceholderText(placeholderText);
+  await userEvent.click(input);
+  await userEvent.type(input, 'Test');
+};
 
-// Story for the Disabled InputField
 export const Disabled: Story<InputFieldProps> = (args) => <InputField {...args} />;
-
 Disabled.args = {
   placeholder: 'Keyword Search',
   disabled: true,
   backgroundColor: '#f5f5f5', 
 };
-

@@ -1,2 +1,2 @@
-export { default } from './RadioButton.tsx';
-export * from './RadioButton.types.tsx';
+export { default } from './RadioButton';
+export * from './RadioButton.types';

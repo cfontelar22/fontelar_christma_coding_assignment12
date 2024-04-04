@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { within, userEvent } from '@storybook/testing-library';
-import Img, { ImgProps } from './Img.tsx';
+import Img, { ImgProps } from './Img';
 
 interface ImgPropsWithDisabled extends ImgProps {
   disabled?: boolean;

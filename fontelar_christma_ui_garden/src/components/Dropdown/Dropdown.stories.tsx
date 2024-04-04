@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { within, userEvent } from '@storybook/testing-library';
-import Dropdown, { DropdownProps } from './Dropdown.tsx';
+import Dropdown, { DropdownProps } from './Dropdown';
 
 export default {
   title: 'Components/Dropdown',

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { within, userEvent } from '@storybook/testing-library';
-import Button, { ButtonProps } from './Button.tsx';
+import Button, { ButtonProps } from './Button';
 
 export default {
   title: 'Components/Button',

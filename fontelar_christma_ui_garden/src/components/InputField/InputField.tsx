@@ -1,14 +1,8 @@
-// InputField.tsx
-
 import React from 'react';
 import styled from 'styled-components';
 
-interface InputFieldProps {
-  placeholder: string;
-  disabled?: boolean;
-  onMouseEnter?: () => void;
-  onClick?: () => void;
-  backgroundColor?: string; 
+interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  backgroundColor?: string;
 }
 
 const Input = styled.input<InputFieldProps>`
@@ -19,13 +13,18 @@ const Input = styled.input<InputFieldProps>`
   width: 100%;
   box-sizing: border-box;
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'text')};
-  background-color: ${({ disabled, backgroundColor }) => (disabled ? '#f5f5f5' : backgroundColor || '#fff')}; // Use backgroundColor prop
+  background-color: ${({ disabled, backgroundColor }) => (disabled ? '#f5f5f5' : backgroundColor || '#fff')};
   color: ${({ disabled }) => (disabled ? '#999' : '#333')};
 `;
 
-const InputField: React.FC<InputFieldProps> = ({ placeholder, disabled, onMouseEnter, onClick, backgroundColor }) => {
-  return <Input type="text" placeholder={placeholder} disabled={disabled} onMouseEnter={onMouseEnter} onClick={onClick} backgroundColor={backgroundColor} />;
-};
+// Use React.forwardRef to allow ref forwarding
+const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
+  ({ backgroundColor, ...props }, ref) => {
+    return <Input ref={ref} {...props} backgroundColor={backgroundColor} />;
+  }
+);
+
+InputField.displayName = 'InputField';
 
 export default InputField;
 export type { InputFieldProps };

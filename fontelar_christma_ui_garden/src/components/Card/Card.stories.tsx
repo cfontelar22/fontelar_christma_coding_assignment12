@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { within, userEvent } from '@storybook/testing-library';
-import Card from './Card.tsx';
+import Card from './Card';
 import { CardProps } from './Card.types';
 
 export default {

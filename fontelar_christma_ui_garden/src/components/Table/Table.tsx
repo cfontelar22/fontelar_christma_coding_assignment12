@@ -10,18 +10,21 @@ export interface TableProps {
 }
 
 const TableContainer = styled.table`
-  width: 80%; 
+  width: 80%;
   margin: 0 auto;
   border-collapse: collapse;
 `;
 
-const CategoryRow = styled.tr<{ backgroundColor?: string; disabled?: boolean }>`
+// Utilizing shouldForwardProp to prevent backgroundColor from being forwarded to the DOM
+const CategoryRow = styled.tr.withConfig({
+  shouldForwardProp: (propName) => !['backgroundColor', 'disabled'].includes(propName),
+})<{ backgroundColor?: string; disabled?: boolean }>`
   background-color: ${({ backgroundColor }) => backgroundColor || '#327573'};
   color: white;
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 
   &:hover {
-    background-color: ${({ backgroundColor, disabled }) => (disabled ? backgroundColor : '#29516b')}; 
+    background-color: ${({ backgroundColor, disabled }) => !disabled ? '#29516b' : backgroundColor || '#327573'}; 
   }
 `;
 
@@ -39,12 +42,6 @@ const Table: React.FC<TableProps> = ({ categories, onClickCategory, backgroundCo
     }
   };
 
-  const handleMouseEnter = () => {
-    if (onMouseEnter && !disabled) {
-      onMouseEnter();
-    }
-  };
-
   return (
     <TableContainer>
       <thead>
@@ -56,10 +53,10 @@ const Table: React.FC<TableProps> = ({ categories, onClickCategory, backgroundCo
         {categories.map((category, index) => (
           <CategoryRow
             key={index}
-            onClick={() => handleClickCategory(category)}
             backgroundColor={backgroundColor}
             disabled={disabled}
-            onMouseEnter={handleMouseEnter}
+            onClick={() => handleClickCategory(category)}
+            onMouseEnter={onMouseEnter}
           >
             <CategoryCell>{category}</CategoryCell>
           </CategoryRow>
