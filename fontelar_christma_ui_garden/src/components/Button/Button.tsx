@@ -8,7 +8,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   hoverBackgroundColor?: string;
 }
 
-const StyledButton = styled.button<{ disabled?: boolean; backgroundColor?: string; hoverBackgroundColor?: string }>`
+const StyledButton = styled.button<ButtonProps>`
   padding: 10px 20px;
   font-size: 16px;
   border: none;
@@ -24,7 +24,7 @@ const StyledButton = styled.button<{ disabled?: boolean; backgroundColor?: strin
   }
 
   &:hover:not(:disabled) {
-    background-color: ${({ hoverBackgroundColor, backgroundColor }) => (hoverBackgroundColor ? hoverBackgroundColor : backgroundColor)};
+    background-color: ${({ hoverBackgroundColor, backgroundColor }) => hoverBackgroundColor || backgroundColor};
   }
 
   &:disabled {
@@ -38,10 +38,19 @@ const StyledButton = styled.button<{ disabled?: boolean; backgroundColor?: strin
   }
 `;
 
-const Button: React.FC<ButtonProps> = ({ text = 'Button', hoverBackgroundColor, ...props }) => {
+const Button: React.FC<ButtonProps> = ({
+  text = 'Button',
+  backgroundColor,
+  hoverBackgroundColor,
+  ...props
+}) => {
   return (
     <div style={{ display: 'inline-block', marginRight: '10px' }}>
-      <StyledButton {...props} hoverBackgroundColor={hoverBackgroundColor}>
+      <StyledButton
+        backgroundColor={backgroundColor}
+        hoverBackgroundColor={hoverBackgroundColor}
+        {...props}
+      >
         {text}
       </StyledButton>
     </div>

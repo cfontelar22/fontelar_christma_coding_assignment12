@@ -1,5 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
+import { within, userEvent } from '@storybook/testing-library';
 import Table, { TableProps } from './Table.tsx';
 
 export default {
@@ -7,12 +8,12 @@ export default {
   component: Table,
   tags: ['autodocs'],
   argTypes: {
-    backgroundColor: { control: { type: 'color', disabled: ({ disabled }) => disabled } },
+    backgroundColor: { control: 'color' },
     disabled: { control: 'boolean' },
     onClickCategory: { action: 'clicked' },
     onMouseEnter: { action: 'hovered' },
   },
-} as Meta;
+} as Meta<TableProps>;
 
 const categories = ['Brand City', 'Design Avenue', 'Social Media District', 'UX Factory', 'Web Town'];
 
@@ -38,25 +39,46 @@ const TableCell = ({ category }: { category: string }) => (
   </tr>
 );
 
-const Template: Story<TableProps> = (args) => (
+export const Default: Story<TableProps> = (args) => (
   <Table {...args}>
     <TableHeader />
     <tbody>
-      {args.categories.map((category: string, index: number) => (
+      {args.categories.map((category, index) => (
         <TableCell key={index} category={category} />
       ))}
     </tbody>
     <TableFooter />
   </Table>
 );
-
-export const Default: Story<TableProps> = Template.bind({});
 Default.args = {
   categories,
 };
+Default.play = async ({ args, canvasElement }) => {
+  const canvas = within(canvasElement);
+  for (const category of args.categories) {
+    // Hover over each category cell.
+    const categoryCell = await canvas.getByText(category);
+    await userEvent.hover(categoryCell);
+    // Click on each category cell.
+    await userEvent.click(categoryCell);
+  
+  }
+};
 
-export const Disabled: Story<TableProps> = Template.bind({});
+
+export const Disabled: Story<TableProps> = (args) => (
+  <Table {...args}>
+    <TableHeader />
+    <tbody>
+      {args.categories.map((category, index) => (
+        <TableCell key={index} category={category} />
+      ))}
+    </tbody>
+    <TableFooter />
+  </Table>
+);
 Disabled.args = {
   categories,
   disabled: true,
 };
+// No play function for Disabled as it should not be interactive
