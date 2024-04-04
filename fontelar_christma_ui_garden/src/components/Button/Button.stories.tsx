@@ -31,11 +31,11 @@ export const ViewButton: Story<ButtonProps> = (args) => <Button {...args} />;
 ViewButton.args = {
   text: 'View',
   backgroundColor: '#F39C12',
-  hoverBackgroundColor: '#FFA501',
+  hoverBackgroundColor: '#FFA500',
 };
 ViewButton.storyName = 'View';
 ViewButton.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement);
+  const canvas = within(canvasElement)
   const button = canvas.getByRole('button', { name: /view/i });
   await userEvent.click(button);
   await userEvent.hover(button);
