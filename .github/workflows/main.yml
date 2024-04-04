@@ -1,10 +1,6 @@
-name: Continuous Integration
-
+name: CI
 on:
   push:
-    branches:
-      - main
-  pull_request:
     branches:
       - main
 
@@ -13,23 +9,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '21.5.0' # Replace with the version you're using
-
-      - name: Cache Node Modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Install Dependencies
-        run: npm install # Changed to npm install
-
-      - name: Run Tests
-        run: npm test
-
+          - uses: actions/checkout@v2
+          - name: Setup Node.js
+            uses: actions/setup-node@v2
+            with:
+              node-version: '20.10.0'
+              npm-version: '10.2.3'
+          - name: Install Dependencies
+            run: npm install
+          - name: Install Jest Globally
+            run: npm install -g jest
+          - name: Run Tests
+            run: jest
