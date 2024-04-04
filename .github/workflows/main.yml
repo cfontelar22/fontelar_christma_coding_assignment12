@@ -13,13 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
+      - uses: actions/checkout@v2
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16' # Use the LTS version of Node.js
+          node-version: '21.5.0' # Replace with the version you're using
 
       - name: Cache Node Modules
         uses: actions/cache@v2
@@ -28,9 +26,10 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      
+
       - name: Install Dependencies
-        run: npm ci # Use npm ci for CI environments as it's faster and more reliable
+        run: npm install # Changed to npm install
 
       - name: Run Tests
-        run: npm test # Your package.json should have a test script to run Jest
+        run: npm test
+
